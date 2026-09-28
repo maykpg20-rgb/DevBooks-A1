@@ -1,0 +1,109 @@
+{
+  "info": {
+    "_postman_id": "d7f7e1c0-8c4d-4b73-9b3d-1a6b5a8b3d21",
+    "name": "DevBooks API - A1",
+    "description": "Coleção de testes da Atividade Prática Avaliativa A1 - Programação para WEB II.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "authorId",
+      "value": "COLE_AQUI_O_ID_DO_AUTOR"
+    },
+    {
+      "key": "bookId",
+      "value": "COLE_AQUI_O_ID_DO_LIVRO"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Criar Autor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Machado de Assis\",\n  \"biography\": \"Escritor brasileiro, autor de obras como Dom Casmurro e Memórias Póstumas de Brás Cubas.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/authors",
+          "host": ["{{baseUrl}}"],
+          "path": ["authors"]
+        }
+      }
+    },
+    {
+      "name": "2 - Criar Livro",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Dom Casmurro\",\n  \"release_year\": 1899,\n  \"author_id\": \"{{authorId}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "3 - Listar Livros com Autores",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "4 - Atualizar Livro",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Dom Casmurro - Edição Revisada\",\n  \"release_year\": 1899\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "{{bookId}}"]
+        }
+      }
+    },
+    {
+      "name": "5 - Excluir Livro",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "{{bookId}}"]
+        }
+      }
+    }
+  ]
+}
